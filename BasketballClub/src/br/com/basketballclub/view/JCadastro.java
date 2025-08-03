@@ -1,4 +1,4 @@
-package view;
+package br.com.basketballclub.view;
 
 import java.awt.EventQueue;
 
@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
@@ -14,6 +15,8 @@ import javax.swing.SpinnerNumberModel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JCadastro extends JFrame {
 
@@ -88,6 +91,17 @@ public class JCadastro extends JFrame {
 		panel.add(lblNewLabel_3);
 		
 		JButton btnNewButtonCadastrar = new JButton("Cadastrar");
+		btnNewButtonCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!textFieldNome.getText().isEmpty() &&
+						!textFieldSenha.getText().isEmpty() &&
+						textFieldSenha.getText().length() >= 4) {
+					
+				} else {
+					JOptionPane.showMessageDialog(btnNewButtonCadastrar, "Campos obrigatórios vazios ou inválidos", "Aviso", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnNewButtonCadastrar.setBounds(87, 243, 104, 23);
 		panel.add(btnNewButtonCadastrar);
 		
