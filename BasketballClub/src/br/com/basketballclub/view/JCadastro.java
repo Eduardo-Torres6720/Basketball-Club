@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.basketballclub.model.Usuario;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -96,7 +99,12 @@ public class JCadastro extends JFrame {
 				if(!textFieldNome.getText().isEmpty() &&
 						!textFieldSenha.getText().isEmpty() &&
 						textFieldSenha.getText().length() >= 4) {
-					
+					Usuario user = new Usuario(
+							textFieldNome.getText(),
+							textFieldSenha.getText(),
+							(Integer) spinnerIdade.getValue(),
+							comboBoxConta.getSelectedItem() == "Organizador"
+							);
 				} else {
 					JOptionPane.showMessageDialog(btnNewButtonCadastrar, "Campos obrigatórios vazios ou inválidos", "Aviso", JOptionPane.ERROR_MESSAGE);
 				}
