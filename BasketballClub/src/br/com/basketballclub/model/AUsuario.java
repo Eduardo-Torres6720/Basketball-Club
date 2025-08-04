@@ -1,19 +1,27 @@
 package br.com.basketballclub.model;
 
-public class Usuario implements IUsuario {
+import java.util.UUID;
+
+public abstract class AUsuario {
 	private String nome;
 	private String senha;
-	private int idade;	//Sei que não é assim que salva a senha do usuário, mas tamo sem tempo
-	private boolean organizador;
+	private String id;
+	private int idade;
 	
-	public Usuario() {}
+	public AUsuario() {}
 	
-	public Usuario(String nome, String senha, int idade, boolean organizador) {
+	public AUsuario(String nome, String senha, int idade) {
 		this.nome = nome;
 		this.senha = senha;
 		this.idade = idade;
-		this.organizador = organizador;
+		this.id = UUID.randomUUID().toString();
 	}
+	
+	public abstract void convidar();
+	
+	public abstract void aceitarConvite();
+	
+	
 	
 	public String getNome() {
 		return nome;
@@ -36,13 +44,6 @@ public class Usuario implements IUsuario {
 		if (idade >= 10) {
 			this.idade = idade;			
 		}
-	}
-	
-	public boolean getOrganizador() {
-		return organizador;
-	}
-	public void setOrganizador(boolean organizador) {
-		this.organizador = organizador;
 	}
 	
 	public String getId() {

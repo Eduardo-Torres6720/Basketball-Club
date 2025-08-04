@@ -2,11 +2,13 @@ package br.com.basketballclub.view;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import br.com.basketballclub.model.Usuario;
+import br.com.basketballclub.model.Jogador;
+import br.com.basketballclub.model.Organizador;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -99,12 +101,17 @@ public class JCadastro extends JFrame {
 				if(!textFieldNome.getText().isEmpty() &&
 						!textFieldSenha.getText().isEmpty() &&
 						textFieldSenha.getText().length() >= 4) {
-					Usuario user = new Usuario(
-							textFieldNome.getText(),
-							textFieldSenha.getText(),
-							(Integer) spinnerIdade.getValue(),
-							comboBoxConta.getSelectedItem() == "Organizador"
-							);
+					if(comboBoxConta.getSelectedItem() == "Organizador") {
+						Organizador org = new Organizador(
+								textFieldNome.getText(),
+								textFieldSenha.getText(),
+								(Integer) spinnerIdade.getValue());
+					} else {
+						Jogador jog = new Jogador(
+								textFieldNome.getText(),
+								textFieldSenha.getText(),
+								(Integer) spinnerIdade.getValue());
+					}
 				} else {
 					JOptionPane.showMessageDialog(btnNewButtonCadastrar, "Campos obrigatórios vazios ou inválidos", "Aviso", JOptionPane.ERROR_MESSAGE);
 				}
